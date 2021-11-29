@@ -1,0 +1,17 @@
+<ion-header>
+ 
+</ion-header>
+
+<ion-content color="dark">
+  <div class="vertical-center">
+    <div class="center">
+      <ion-img src="assets/covir.jpg"  class="ion-align-self-end"></ion-img>
+    </div>   
+  </div>
+  
+  <app-auth-form #loginForm (formSubmitted)="loginUser($event)" [actionButtonText]="'Entrar'" color=""></app-auth-form>
+
+  <ion-button expand="block" fill="clear" routerLink="/reset-password" color="medium">
+    Recuperar contraseña
+  </ion-button>
+</ion-content>

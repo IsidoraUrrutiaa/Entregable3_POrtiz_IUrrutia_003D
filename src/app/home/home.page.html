@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+     <ion-title  class="ion-text-center">app mobile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/profile">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+
+  
+  <ion-button expand="block" fill="clear" routerLink="/signup">
+    Crear Cuenta
+  </ion-button>
+  <ion-button expand="block" fill="clear" routerLink="/camp">
+    Crear informacion
+  </ion-button>
+
+</div>
+
+<div class="ion-padding">
+
+  <ion-infinite-scroll>
+
+    <ion-title class="ion-text-center">Informacion</ion-title>
+
+      <ion-list>
+    
+        <ion-item-sliding class="align-items-center" *ngFor="let record of ingreso; let i = index">
+
+    <ion-item>
+      <ion-input cols="20" readonly="true" position="fidex"> nombre informacion: {{record.nombrec}} estado: {{record.estadoc}} fecha inicio: {{record.f_inicio}} fecha final: {{record.f_final}} </ion-input>
+    </ion-item>
+
+    <ion-item-options side="end" (click)="cambiarestado(record.id)" >
+    <ion-item-option color="danger"> cambiar </ion-item-option>
+
+    </ion-item-options>
+
+    </ion-item-sliding>
+
+
+
+  </ion-list>
+     
+     
+    
+</ion-infinite-scroll>
+<ion-button expand="block" color="light" routerLink="/index">
+  Bienvenido a nuesta aplicación, por favor pinche este botón para entrar
+</ion-button>
+</div>
