@@ -6,6 +6,8 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { AuthGuard } from './services/auth.guard';
+
 interface Componente{
   icon: string; 
   name: string; 
@@ -23,7 +25,7 @@ export class AppComponent {
     // cargar 
     private PushService:PushService,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
   ) {
     this.initializeApp();
   }

@@ -11,6 +11,10 @@
   
   <app-auth-form #loginForm (formSubmitted)="loginUser($event)" [actionButtonText]="'Entrar'" color=""></app-auth-form>
 
+  <ion-button expand="block" routerLink="/signup" color="light">
+    Registrarse
+  </ion-button>
+
   <ion-button expand="block" fill="clear" routerLink="/reset-password" color="medium">
     Recuperar contraseña
   </ion-button>

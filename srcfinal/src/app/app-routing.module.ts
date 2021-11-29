@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'index', pathMatch: 'full' },
   {
     path: 'index',
     loadChildren: () =>
@@ -31,18 +31,9 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () =>
       import('./pages/profile/profile.module').then(m => m.ProfilePageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
 
-  { path: 'camp',  loadChildren:  () =>
-  import('./pages/camp/camp.module').then(m => m.CampPageModule),
-   canActivate: [AuthGuard]},
-   {
-    path: 'home',
-    loadChildren: () =>
-      import('./home/home.module').then(m => m.HomePageModule),
-    canActivate: [AuthGuard]
-  },
   /*{ path: 'index', loadChildren: './pages/index/index.module#IndexPageModule' },*/
   {
     path: 'medidas',

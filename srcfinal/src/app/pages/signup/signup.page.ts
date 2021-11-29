@@ -3,6 +3,7 @@ import { UserCredential } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthFormComponent } from 'src/app/components/auth-form/auth-form.component';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import firebase from 'firebase/app';
 
 @Component({
@@ -13,22 +14,27 @@ import firebase from 'firebase/app';
 export class SignupPage implements OnInit {
   @ViewChild(AuthFormComponent)
   signupForm: AuthFormComponent;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private alertCtrl: AlertController,) { }
 
   ngOnInit() { }
 
   async signupUser(credentials: UserCredential): Promise<void> {
-    try {
-      const userCredential: firebase.auth.UserCredential = await this.authService.signup(
+    try { 
+      const userCredential: firebase.auth.UserCredential = await this.authService.signup( 
         credentials.email,
         credentials.password
       );
-      this.authService.userId = userCredential.user.uid;
-      await this.signupForm.hideLoading();
-      this.router.navigateByUrl('profile');
+      this.authService.userId = userCredential.user.uid; 
+      await this.signupForm.hideLoading(); 
+      this.router.navigateByUrl('index'); 
+      console.log('El usuario ha sido registrado');
     } catch (error) {
       await this.signupForm.hideLoading();
       this.signupForm.handleError(error);
+      console.log('Ha ocurrido un imprevisto');
     }
   }
 }

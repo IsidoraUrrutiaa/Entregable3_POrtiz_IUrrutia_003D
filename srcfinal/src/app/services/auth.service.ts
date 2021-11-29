@@ -34,12 +34,10 @@ export class AuthService {
   ): Promise<firebase.auth.UserCredential> {
     try {
       const newUserCredential: firebase.auth.UserCredential = await this.afAuth.createUserWithEmailAndPassword(email,password);
-      await this.firestore
-        .doc(`userProfile/${newUserCredential.user.uid}`)
-        .set({ email });
       return newUserCredential;
     } catch (error) {
-      throw error;
+      console.log(error)
+      throw error; 
     }
   }
 
